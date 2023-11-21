@@ -1,0 +1,312 @@
+My idea
+
+Github Account:ironpenguin222
+
+Use this to summarize your idea, plan it using sketches, notes and pseudocode as needed
+Tower Defense game, you play as the Pizza planet, the biggest pizza producer in the entire galaxy, and there are aliens that have decided that they want to steal all of the pizza. The pizza planet will place down towers to protect their pizza though. The enemies will go down a path to try to get down to the end which is the pizza vault and the towers must stop them from doing so, get.money from killing them, and build up an army of pizza defenders.
+
+
+
+Initialize:
+    Set up game window and variables
+    Create lists for towers, enemies, and projectiles
+    Set starting currency
+
+Game Loop:
+    Update and display enemies
+    Update and display towers and projectiles
+    Tower attacks enemies within range
+
+    Handle player input:
+        If mouse click:
+            Check if the clicked position is a valid tower placement area
+            If valid and enough money:
+                Place a regular tower
+                Deduct money
+        If key press:
+            Spawn an enemy or place a powerful tower if enough money
+
+    Remove defeated enemies
+    Update currency based on enemy rewards and tower costs
+
+    Display current wave, remaining enemies, and currency
+
+Tower Class:
+    Properties: x, y, damage, range, fireRate, cooldown, projectiles
+    Methods: attack(enemy), updateProjectiles(), display()
+
+PowerfulTower Class (inherits from Tower):
+    Constructor adjusts fireRate for slower attacks
+
+Enemy Class:
+    Properties: x, y, health, speed, reward
+    Methods: takeDamage(damage), move(), display()
+
+Projectile Class:
+    Properties: x, y, speed, target, damage
+    Methods: update(), display(), isOutOfRange(), hitEnemy()
+
+Main Code:
+    Set up initial game state (e.g., create path for enemies)
+    Run game loop:
+        Spawn enemies based on a wave schedule
+        Allow tower placement and enemy spawning
+        Manage tower attacks, enemy movement, and currency
+        Check for victory or defeat conditions
+
+
+
+
+
+
+Where will the inventory skills be demonstrated? List every one to be sure you’ve included them.
+Shapes
+1. line, ellipse, rect, triangle, quad, arc, curve: Used for rendering game elements such as towers, enemies, and projectiles. (Found in tower, enemy, and projectile classes)
+2. fill, stroke, strokeWeight, noFill, noStroke, color: Control the appearance (color, stroke, etc.) of shapes. (Used in display methods of Tower and Projectile classes)
+3. Modes: CORNER, CORNERS, CENTER, RADIUS: Control the positioning and drawing mode of shapes. (Used in Tower display)
+
+System
+4. setup(), draw(): Essential Processing functions, where setup() initializes the game, and draw() is the game loop. (Allows code to run)
+5. background(), random(), noise(): Set background color, generate random values, and use Perlin noise for procedural content. (Used in setup and to generate enemy attributes)
+6. constrain(), dist(): Ensure values stay within a specified range and calculate distances. (Used in Tower attack method)
+7. keyPressed(), keyReleased(), keyPressed, mousePressed(), mousePressed: Handle keyboard and mouse input events. (Used in mousePressed and keyPressed functions)
+8. increment operators: ++, +=, --, -=, *=, /=: Used for incrementing and decrementing variables. (Used in Tower cooldown handling)
+9. declare and use a local variable: Local variables store temporary data within functions or blocks. (Used in various functions for temporary calculations)
+10. declare and use a global variable: Global variables store data accessible across functions and classes. (Used for currency and lists of towers and enemies)
+
+Debugging
+11. println(), stop(): Output information to the console for debugging, and stop the program execution. (Used for debugging messages)
+
+Control Flow
+12. conditional statements: if, else if, else: Make decisions based on conditions. (Used in various places for decision-making)
+13. Boolean expressions: ==, >=, <=, >, <, !=: Evaluate conditions in control structures. (Used in if conditions)
+14. Logical operators: &&, ||: Combine multiple conditions. (Used in logical conditions)
+15. switch statement: Implement a multi-way branch based on a variable. (handle various cases based on the type of enemies)
+
+Loops
+16. for loop, while loop: Implement iteration structures. (Used for iterating over enemies and towers)
+17. A nested loop: Use loops within loops for complex iterations. (Iterate over each wave of enemies)
+18. break(): Exit a loop prematurely. (Break exits the loop when the player wins)
+19. What’s the difference between a for loop and a while loop?: Different loop constructs for varying use cases. (Used in various places)
+
+Functions
+20. Declare & call a function with no parameters and no return type: Define and use functions for modular code. (Used for setup, draw, and various other functions)
+21. Declare & call a function with a return type: Functions that return a value. (Calculate and return values, such as damage dealt by tower)
+22. What’s the difference between parameters and arguments?: Parameters are in the function definition; arguments are passed during the function call. (Used in function definitions and calls)
+23. Pass by copy (value): declare and use a function that takes int, float, char, etc as an argument: Function operates on a copy of the value. (modifying the speed of a specific enemy type)
+24. Pass by reference (objects): declare and use a function that takes an object as an argument: Function operates on the actual object. (Used in Tower updateProjectiles method)
+
+Classes/Objects
+25. What’s the difference between a class and an object?: A class is a blueprint, an object is an instance of that class. (Used in defining classes and creating objects)
+26. What is a constructor function? What does it do and when?: Initializes an object when it's created. Called automatically. (Used in Tower, PowerfulTower, Enemy, and Projectile classes)
+27. Why should each class have its own tab in Processing?: Organize code for readability and maintenance.
+28. Write a class with a constructor function: Define a class with an initialization function. (Used in Tower, PowerfulTower, Enemy, and Projectile classes)
+29. Use the keyword new to instantiate an object: Create an instance of a class. (Used when creating objects)
+30. Write a constructor function with parameters: Initialize object properties with specified values. (Used in Tower, PowerfulTower, Enemy, and Projectile classes)
+
+Lists
+31. What’s the difference between an array and an ArrayList?: Array has a fixed size; ArrayList can dynamically grow. (Used for storing towers, enemies, and projectiles)
+32. Why would you want to go through a list backwards, decrementing the index?: Useful in some algorithms or when removing elements. 
+33. Initialize and populate an array: Set up and fill an array. (Used for storing waypoints)
+34. Initialize and populate an ArrayList: Set up and fill an ArrayList. (Used for storing towers, enemies, and projectiles)
+35. Manage a set of objects with an array or ArrayList: Store towers, enemies, etc., in lists. (Used for managing game entities)
+36. Use an ArrayList method: size(), get(), remove(), contains(): Manipulate ArrayList data. (Used for managing towers, enemies, and projectiles)
+
+Vectors
+37. When should you use PVector instead of float variables?: Use PVectors for handling 2D vector operations. (Used in Tower, Projectile, and Enemy classes)
+38. Use the PVector class: Utilize PVector for position, velocity, and acceleration. (Used in Tower, Projectile, and Enemy classes)
+39. Do some basic physics: use position, velocity, and acceleration (due to gravity) vectors: Implement basic physics simulation. (Used for enemy movement)
+40. Find the direction and distance between two points: Use PVector methods for direction and distance calculations. (Used in Projectile class)
+41. Create a random 2D vector: Generate random PVector for various applications
+42. What is a normalized vector, why is it useful?: A vector with a magnitude of 1; useful for direction calculations.
+43. Using the Processing documentation look up a method in the PVector class that’s new to you and use it in your code: Example of exploring and applying PVector methods. 
+
+Nice to Know (optional)
+44. Use a timer: Implement a timer for timed events. 
+45. Switch between “game states” (eg grounded/jumping) using conditional statements: Manage different states of the game.
+46. Make a button or toggle switch with a roll-over highlight (color or size change): Implement interactive elements.
+47. Create a drag & drop object: Allow user interaction with draggable elements. 
+48. Do animation with images (spritesheet or individual files): Animate game elements using images.
+49. Use collision detection between objects: Check for collisions between towers, projectiles, and enemies. (Used in Projectile class)
+50. Use the Game Control Plus controller library to get joystick or gamepad input: Integrate external controllers for user input. 
+
+
+Milestone 1
+Milestone 2
+Milestone 3
+Milestone 4
+What will I deliver?
+
+Basic game setup with an interactive window.
+2. Tower and enemy classes defined with placeholder graphics.
+3. Towers can be placed on the screen, validating valid placement areas.
+4. Enemies spawn and move along a predefined path.
+5. Basic tower-enemy interactions (e.g., towers attacking enemies).
+
+
+
+
+
+
+
+
+
+
+
+
+1. Towers can attack enemies within their range.
+2. Projectiles move toward enemies and deal damage.
+3. Introduce a currency system for tower placement.
+4. Basic UI elements displaying currency and relevant information.
+5. Implement a basic scoring system.
+6. Implement better designs for enemies/towers
+More advanced enemy behaviors (e.g., different speeds).
+2. Introduce a wave-based system for enemy spawning.
+3. Improved UI displaying wave information.
+4. Implement a scoring system with wave progression.
+5. Add variety to tower types (e.g., powerful towers).
+6. Implement a basic end-game condition.
+7.work on aesthetic of game to make look better
+
+
+1. Refinements to game mechanics and balancing.
+2. Implement additional features (e.g., multiple levels, tower upgrades).
+3. Address any identified bugs or issues.
+4. Final playtesting and adjustments.
+5. Documentation and preparation for submission.
+1. Shapes: Implement basic shapes for towers, enemies, and projectiles.
+2. Classes/objects: Define Tower, PowerfulTower, Enemy, and Projectile classes.
+3. Lists: Use ArrayLists to manage towers, enemies, and projectiles.
+4. System: Implement the setup() and draw() functions for the game loop.
+5. Control flow: Use conditional statements for tower placement and enemy spawning.
+6. Loops: Implement a basic loop for spawning enemies and updating their movement.
+7. Dist(): Calculate distances for tower-enemy interactions.
+8. MousePressed(): Allow tower placement based on mouse clicks.
+9. keyPressed(): Trigger enemy spawning or powerful tower placement.
+10. Display(): Show towers, enemies, and projectiles on the screen.
+
+
+
+1. Functions: Define functions for tower attacks and projectile movement.
+2. Control flow: Implement tower attacks and cooldowns.
+3. Lists: Manage the removal of defeated enemies and projectiles.
+4. Declare and use a local variable: Use variables for tower damage, range, etc.
+5. Declare and use a global variable: Implement a global variable for currency.
+6. Dist(): Calculate distances for projectile-enemy interactions.
+7. Loops: Use loops to update and display towers and projectiles.
+8. Display(): Show currency and other UI elements on the screen.
+9. Increment operators: Adjust currency based on enemy rewards and tower costs.
+10. Pass by copy (value): Use pass by copy for temporary calculations, e.g., modifying enemy speed.
+
+
+
+1. Conditional statements: Introduce conditional statements for advanced enemy behaviors.
+2. Switch statement: Implement a switch statement for different enemy types or behaviors.
+3. Nested loop: Use nested loops to handle wave-based enemy spawning.
+4. Break(): Implement a break statement for specific conditions (e.g., end of a wave).
+5. Timer: Introduce a timer for timed events, like enemy wave intervals.
+6. Display(): Show wave information on the UI.
+7. Debugging: Use println() for debugging and tracking game progress.
+8. Control flow: Manage the transition between waves and game states.
+9. Declare and use a function with a return type: Implement a function for more complex calculations.
+10. Pass by reference (objects): Use pass by reference for interacting with game objects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+You should deliver approx. 10 skills at this milestone
+You should deliver approx. 10 skills at this milestone
+You must deliver 30 inventory skills by this milestone.
+
+
+
+
