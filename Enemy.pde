@@ -3,18 +3,32 @@ class Enemy {
   int health;
   int speed;
   int reward; // Amount of money rewarded when the enemy is defeated
+  int minHealth = 50;
+  int maxHealth = 150;
   ArrayList<PVector> waypoints;
   int currentWaypoint = 0;
   boolean rewardTriggered = false;
 
-  Enemy(ArrayList<PVector> waypoints, int speed, int reward) {
+ int spawnTime;
+
+  Enemy(ArrayList<PVector> waypoints, int speed, int reward, int spawnTime, int health) {
     this.waypoints = waypoints;
     this.x = waypoints.get(0).x;
     this.y = waypoints.get(0).y;
-    this.health = (int) random(50, 150); // Random initial health between 50 and 150
+    this.health = health;
     this.speed = speed;
     this.reward = reward;
+    this.spawnTime = spawnTime;
+    this.minHealth = minHealth;
+    this.maxHealth = maxHealth;
+
   }
+  
+  void increasesHealth(int amount){
+    this.minHealth += amount;
+    this.maxHealth += amount;
+  }
+
 
   void takeDamage(int damage) {
     health -= damage;
@@ -60,6 +74,6 @@ void despawn() {
     // Adjust color based on health
     float healthColor = map(health, 0, 150, 255, 0);
     fill(255, healthColor, 0); // Color based on health
-    ellipse(x, y, 20, 20); // Assuming enemies are represented as circles
+    ellipse(x, y, 20, 20); //Using enemies are represented as circles
   }
 }
