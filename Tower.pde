@@ -20,7 +20,6 @@ class Tower {
 
   void attack(Enemy enemy) {
     float distance = dist(x, y, enemy.x, enemy.y);
- 
     if (distance < range && cooldown <= 0 && projectiles.size() < maxProjectiles) {
       Projectile projectile = new Projectile(x, y, enemy, damage);
       projectiles.add(projectile);

@@ -8,7 +8,6 @@ int enemyCount =5;
 int minEnemyHealth;
 int maxEnemyHealth;
 int framerate;
-
 // Lists to store towers, enemies, and projectiles
 ArrayList<Tower> towers;
 ArrayList<Enemy> enemies;
@@ -66,9 +65,9 @@ fill(0);
     tower.updateProjectiles();
     tower.display();
   }
-
+  
   // Tower attacks enemies within range
-  if(framerate % 4 == 0){
+  if((framerate % enemyCount-3) == 0){
   for (Tower tower : towers) {
     for (Enemy enemy : enemies) {
       tower.attack(enemy);
@@ -106,8 +105,8 @@ void spawnEnemyWave(int numEnemies) {
   int reward = (int) random(10, 30); // Random reward between 10 and 30
 
   // Increase min and max enemy health after each wave
-  minEnemyHealth += 30;
-  maxEnemyHealth += 60; 
+  minEnemyHealth += 20;
+  maxEnemyHealth += 30; 
 
   for (int i = 0; i < numEnemies; i++) {
     int spawnTime = i * enemySpawnDelay + frameCount;
