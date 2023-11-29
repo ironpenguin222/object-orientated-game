@@ -20,6 +20,7 @@ class Tower {
 
   void attack(Enemy enemy) {
     float distance = dist(x, y, enemy.x, enemy.y);
+ 
     if (distance < range && cooldown <= 0 && projectiles.size() < maxProjectiles) {
       Projectile projectile = new Projectile(x, y, enemy, damage);
       projectiles.add(projectile);
@@ -29,6 +30,7 @@ class Tower {
       cooldown--; // Decrease cooldown counter
     }
   }
+  
 
   void updateProjectiles() {
     for (Projectile projectile : projectiles) {
@@ -41,7 +43,7 @@ class Tower {
   }
 
   void display() {
-    fill(255, 255, 0); // Yellow color for towers
-    rect(x, y, 20, 20); //towers are represented as rectangles
+    fill(255, 255, 255); // White color for towers
+    ellipse(x, y, 25, 25); //towers are represented as rectangles
   }
 }

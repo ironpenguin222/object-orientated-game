@@ -19,8 +19,6 @@ class Enemy {
     this.speed = speed;
     this.reward = reward;
     this.spawnTime = spawnTime;
-    this.minHealth = minHealth;
-    this.maxHealth = maxHealth;
 
   }
   
@@ -70,10 +68,16 @@ void despawn() {
     }
   }
 
-  void display() {
+  void display() { 
     // Adjust color based on health
     float healthColor = map(health, 0, 150, 255, 0);
     fill(255, healthColor, 0); // Color based on health
     ellipse(x, y, 20, 20); //Using enemies are represented as circles
+    fill(255, 255, 255);
+    ellipse(x-3.5, y+2, 5, 5);
+    ellipse(x+3.5, y+2, 5, 5);
+    fill(0, 0, 0);
+    ellipse(x-3.5, y+3, 2, 2);
+    ellipse(x+3.5, y+3, 2, 2);
   }
 }

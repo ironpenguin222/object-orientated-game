@@ -20,8 +20,16 @@ class Projectile {
   }
 
   void display() {
-    fill(0, 255, 0); // Green color for projectiles
+    fill(205, 133, 63); // yellow color for projectiles
     ellipse(x, y, 10, 10); // projectiles are represented as circles
+    fill(255, 255, 0); // yellow color for projectiles
+    ellipse(x, y, 8, 8); // projectiles are represented as circles
+    fill(255, 0, 0); // yellow color for projectiles
+    ellipse(x+2, y, 2, 2);
+    ellipse(x+1, y+2, 2, 2);
+    ellipse(x-1, y+2, 2, 2);
+    ellipse(x+2, y-2, 2, 2);
+    ellipse(x-2, y-2, 2, 2);
   }
 
 

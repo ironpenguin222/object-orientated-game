@@ -2,11 +2,12 @@ int lives = 3; // Starting number of lives
 int maxLives = 5; // Maximum number of lives
 boolean gameOver = false;
 int lastWaveSpawnFrame = 0;
-int waveSpawnDelay = 150; // Delay between each enemy wave spawn
+int waveSpawnDelay = 250; // Delay between each enemy wave spawn
 int wave;
 int enemyCount =5;
 int minEnemyHealth;
 int maxEnemyHealth;
+int framerate;
 
 // Lists to store towers, enemies, and projectiles
 ArrayList<Tower> towers;
@@ -36,7 +37,7 @@ void draw() {
   rect(180, 40, 40, 140);
   rect(180, 40, 180, 40);
   rect(320, 40, 40, 400);
-
+framerate +=1;
 fill(0);
   textSize(16);
   text("Lives: " + lives, width - 250, height - 20);
@@ -67,10 +68,12 @@ fill(0);
   }
 
   // Tower attacks enemies within range
+  if(framerate % 4 == 0){
   for (Tower tower : towers) {
     for (Enemy enemy : enemies) {
       tower.attack(enemy);
     }
+  }
   }
 
   // Remove defeated enemies
@@ -80,7 +83,7 @@ fill(0);
   fill(0);
   textSize(16);
   text("Currency: $" + currency, 10, height - 20);
-  text("Wave: " + wave, 10, height - 20);
+  text("Wave: " + wave, 240, height - 20);
 }
 
 void mousePressed() {
