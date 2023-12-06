@@ -32,9 +32,6 @@ void setup() {
 
 void draw() {
   background(200);
-  if(menu == true){
-  rect(0,0,400,400);
-  }
   rect(30, 0, 40, 180);
   rect(30, 180, 190, 40);
   rect(180, 40, 40, 140);
@@ -86,6 +83,17 @@ fill(0);
   textSize(16);
   text("Currency: $" + currency, 10, height - 20);
   text("Wave: " + wave, 240, height - 20);
+  
+   if(menu == true){
+  fill(230, 220, 100);
+  rect(0,0,400,400);
+  textSize(60);
+  fill(230, 220, 100);
+  fill(210, 12, 10);
+  text("Pizza Defender", 15, 170);
+  textSize(20);
+  text("[Click anywhere to start]", 100, 250);
+  }
 }
 
 void mousePressed() {
