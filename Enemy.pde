@@ -58,7 +58,7 @@ class Enemy {
   }
 
 void despawn() {
-    lives--; // Deduct a life
+    lives-=health; // Deduct a life
     if (lives <= 0) {
       // Game over
       gameOver = true;

@@ -1,6 +1,7 @@
 class Tower {
   float x, y;
   int damage;
+  int framerate;
   int range;
   int fireRate; // Fire rate in frames
   int cooldown; // Cooldown counter
@@ -16,10 +17,13 @@ class Tower {
     this.cooldown = 0;
     this.maxProjectiles = maxProjectiles;
     this.projectiles = new ArrayList<>();
+    this.framerate =0;
   }
 
   void attack(Enemy enemy) {
     float distance = dist(x, y, enemy.x, enemy.y);
+    framerate+=1;
+   if((framerate % enemyCount-1) == 0){
     if (distance < range && cooldown <= 0 && projectiles.size() < maxProjectiles) {
       Projectile projectile = new Projectile(x, y, enemy, damage);
       projectiles.add(projectile);
@@ -28,6 +32,7 @@ class Tower {
     } else if (cooldown > 0) {
       cooldown--; // Decrease cooldown counter
     }
+  }
   }
   
 

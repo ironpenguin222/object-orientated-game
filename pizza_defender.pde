@@ -1,4 +1,4 @@
-int lives = 3; // Starting number of lives
+int lives = 150; // Starting number of lives
 int maxLives = 5; // Maximum number of lives
 boolean gameOver = false;
 int lastWaveSpawnFrame = 0;
@@ -67,13 +67,12 @@ fill(0);
   }
   
   // Tower attacks enemies within range
-  if((framerate % enemyCount-3) == 0){
   for (Tower tower : towers) {
     for (Enemy enemy : enemies) {
       tower.attack(enemy);
     }
   }
-  }
+  
 
   // Remove defeated enemies
   enemies.removeIf(enemy -> enemy.health <= 0);
@@ -105,8 +104,8 @@ void spawnEnemyWave(int numEnemies) {
   int reward = (int) random(10, 30); // Random reward between 10 and 30
 
   // Increase min and max enemy health after each wave
-  minEnemyHealth += 20;
-  maxEnemyHealth += 30; 
+  minEnemyHealth += 15;
+  maxEnemyHealth += 25; 
 
   for (int i = 0; i < numEnemies; i++) {
     int spawnTime = i * enemySpawnDelay + frameCount;
@@ -118,38 +117,41 @@ void spawnEnemyWave(int numEnemies) {
   }
 }
 void keyPressed() {
-   //Spawn an enemy when a key is pressed
-  if (key == ' ') {
-    int reward = (int) random(10, 30); // Random reward between 10 and 30
-    Enemy enemy = new Enemy(waypoints, 2, reward, 2, 5); // Example value for speed
+  switch (key) {
+    case ' ':
+    int reward = (int) random(23, 27); // Random reward between 10 and 30
+    Enemy enemy = new Enemy(waypoints, 2, reward, 2, 10); // Enemy stats
     enemies.add(enemy);
     println("Enemy spawned! Health: " + enemy.health);
-  }
-if (key == 'w' && frameCount - lastWaveSpawnFrame > waveSpawnDelay) {
-    spawnEnemyWave(enemyCount); // Example: spawn 5 enemies in a wave
-    lastWaveSpawnFrame = frameCount; // Update the last wave spawn frame
-    enemyCount+=1;
-  }
-    
 
-   // Place a powerful tower where the mouse is clicked if there is enough money
-  if ((key == 'p') && currency >= 100) {
-   Tower powerfulTower = new Tower(mouseX, mouseY, 60, 600, 100, 3); // damage, range, fire rate, and max projectiles
-    towers.add(powerfulTower);
-    // Deduct money when placing a powerful tower
-    currency -= 100;
-    println("Powerful Tower placed! Remaining money: $" + currency);
-  } else if ((key == 'p') && currency < 100) {
-    println("Not enough money to place a Powerful Tower!");
+      break;
+    case 'w':
+      if (frameCount - lastWaveSpawnFrame > waveSpawnDelay) {
+        spawnEnemyWave(enemyCount);
+        lastWaveSpawnFrame = frameCount;
+        enemyCount += 1;
+      }
+      break;
+    case 'p':
+      if (currency >= 100) {
+        Tower powerfulTower = new Tower(mouseX, mouseY, 60, 1000, 100, 1);
+        towers.add(powerfulTower);
+        currency -= 100;
+        println("Powerful Tower placed! Remaining money: $" + currency);
+      } else {
+        println("Not enough money to place a Powerful Tower!");
+      }
+      break;
+    case 'q':
+      if (currency >= 120) {
+        Tower quickTower = new Tower(mouseX, mouseY, 15, 180, 10, 100);
+        towers.add(quickTower);
+        currency -= 120;
+        println("Quick Tower placed! Remaining money: $" + currency);
+      } else {
+        println("Not enough money to place a Quick Tower!");
+      }
+      break;
+    default:  
   }
-  if ((key == 'q') && currency >= 120) {
-   Tower quickTower = new Tower(mouseX, mouseY, 10, 120, 10, 3); // damage, range, fire rate, and max projectiles
-    towers.add(quickTower);
-    // Deduct money when placing a quick tower
-    currency -= 120;
-    println("Quick Tower placed! Remaining money: $" + currency);
-  } else if ((key == 'q') && currency < 120) {
-    println("Not enough money to place a Quick Tower!");
-  }
-
 }
