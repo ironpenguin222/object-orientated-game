@@ -8,6 +8,7 @@ int enemyCount =5;
 int minEnemyHealth;
 int maxEnemyHealth;
 int framerate;
+boolean menu = true;
 // Lists to store towers, enemies, and projectiles
 ArrayList<Tower> towers;
 ArrayList<Enemy> enemies;
@@ -31,6 +32,9 @@ void setup() {
 
 void draw() {
   background(200);
+  if(menu == true){
+  rect(0,0,400,400);
+  }
   rect(30, 0, 40, 180);
   rect(30, 180, 190, 40);
   rect(180, 40, 40, 140);
@@ -85,17 +89,13 @@ fill(0);
 }
 
 void mousePressed() {
-  // Place a regular tower where the mouse is clicked if there is enough money
-  if (currency >= 50) {
-    Tower tower = new Tower(mouseX, mouseY, 20, 120, 30, 5); // damage, range, fire rate, and max projectiles
-    towers.add(tower);
-    // Deduct money when placing a tower
-    currency -= 50;
-    println("Tower placed! Remaining money: $" + currency);
-  } else {
-    println("Not enough money to place a tower!");
+  if(mouseX > 0 && mouseX < 400){
+    if(mouseY > 0 && mouseY < 400){
+      menu = false;
+    }
   }
 }
+  
 
 int enemySpawnDelay = 10;
 
@@ -104,6 +104,8 @@ void spawnEnemyWave(int numEnemies) {
   int reward = (int) random(10, 30); // Random reward between 10 and 30
 
   // Increase min and max enemy health after each wave
+  minEnemyHealth *= (1.03);
+  maxEnemyHealth *= (1.03); 
   minEnemyHealth += 15;
   maxEnemyHealth += 25; 
 
@@ -118,21 +120,33 @@ void spawnEnemyWave(int numEnemies) {
 }
 void keyPressed() {
   switch (key) {
-    case ' ':
+    case 'e':
     int reward = (int) random(23, 27); // Random reward between 10 and 30
     Enemy enemy = new Enemy(waypoints, 2, reward, 2, 10); // Enemy stats
     enemies.add(enemy);
     println("Enemy spawned! Health: " + enemy.health);
 
       break;
-    case 'w':
+    case ' ':
       if (frameCount - lastWaveSpawnFrame > waveSpawnDelay) {
         spawnEnemyWave(enemyCount);
         lastWaveSpawnFrame = frameCount;
         enemyCount += 1;
       }
       break;
-    case 'p':
+      
+      case '1':
+      if (currency >= 50) {
+    Tower tower = new Tower(mouseX, mouseY, 20, 120, 30, 5); // damage, range, fire rate, and max projectiles
+    towers.add(tower);
+    currency -= 50;
+    println("Tower placed! Remaining money: $" + currency);
+  } else {
+    println("Not enough money to place a tower!");
+  }
+  break;
+
+    case '2':
       if (currency >= 100) {
         Tower powerfulTower = new Tower(mouseX, mouseY, 60, 1000, 100, 1);
         towers.add(powerfulTower);
@@ -142,7 +156,7 @@ void keyPressed() {
         println("Not enough money to place a Powerful Tower!");
       }
       break;
-    case 'q':
+    case '3':
       if (currency >= 120) {
         Tower quickTower = new Tower(mouseX, mouseY, 15, 180, 10, 100);
         towers.add(quickTower);
@@ -150,6 +164,16 @@ void keyPressed() {
         println("Quick Tower placed! Remaining money: $" + currency);
       } else {
         println("Not enough money to place a Quick Tower!");
+      }
+      break;
+    case '4':
+      if (currency >= 60) {
+        Tower meleeTower = new Tower(mouseX, mouseY, 50, 40, 50, 1);
+        towers.add(meleeTower);
+        currency -= 60;
+        println("Melee Tower placed! Remaining money: $" + currency);
+      } else {
+        println("Not enough money to place a Melee Tower!");
       }
       break;
     default:  

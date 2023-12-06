@@ -48,6 +48,30 @@ class Tower {
 
   void display() {
     fill(255, 255, 255); // White color for towers
-    ellipse(x, y, 25, 25); //towers are represented as rectangles
+    ellipse(x, y, 25, 25); //towers are represented as circle
+    ellipse(x-10, y, 10, 10);
+    ellipse(x-8.5, y-3, 10, 10);
+    ellipse(x-6.5, y-6, 10, 10);
+    ellipse(x-4, y-9, 10, 10);
+    ellipse(x-1, y-9.6, 10, 10);
+    ellipse(x+2, y-9.5, 10, 10);
+    ellipse(x+4, y-9, 10, 10);
+    ellipse(x+6, y-6, 10, 10);
+     ellipse(x+8, y-3, 10, 10);
+     ellipse(x+9, y-1, 10, 10);
+     ellipse(x+9, y+2, 10, 10);
+      ellipse(x+10, y, 10, 10);
+    ellipse(x+8.5, y+3, 10, 10);
+    ellipse(x+6.5, y+6, 10, 10);
+    ellipse(x+4, y+9, 10, 10);
+    ellipse(x+1, y+9.6, 10, 10);
+    ellipse(x-2, y+9.5, 10, 10);
+    ellipse(x-4, y+9, 10, 10);
+    ellipse(x-6, y+6, 10, 10);
+     ellipse(x-8, y+3, 10, 10);
+     ellipse(x-9, y+1, 10, 10);
+     ellipse(x-9, y-2, 10, 10);
+     ellipse(x, y, 20, 20);
+
   }
 }
