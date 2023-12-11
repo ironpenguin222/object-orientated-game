@@ -20,10 +20,11 @@ class Tower {
     this.framerate =0;
   }
 
-  void attack(Enemy enemy) {
-    float distance = dist(x, y, enemy.x, enemy.y);
-    framerate+=1;
+ void attack(ArrayList<Enemy> enemies) {
+   framerate+=1;
    if((framerate % enemyCount-1) == 0){
+  for (Enemy enemy : enemies) {
+    float distance = dist(x, y, enemy.x, enemy.y);
     if (distance < range && cooldown <= 0 && projectiles.size() < maxProjectiles) {
       Projectile projectile = new Projectile(x, y, enemy, damage);
       projectiles.add(projectile);
@@ -34,6 +35,7 @@ class Tower {
     }
   }
   }
+}
   
 
   void updateProjectiles() {
