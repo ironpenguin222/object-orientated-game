@@ -9,7 +9,7 @@ class Projectile {
     this.y = y;
     this.target = target;
     this.damage = damage;
-    this.speed = 5;
+    this.speed = 2.5;
   }
 
   void update() {
@@ -20,18 +20,12 @@ class Projectile {
   }
 
   void display() {
-    fill(205, 133, 63); // yellow color for projectiles
-    ellipse(x, y, 10, 10); // projectiles are represented as circles
-    fill(255, 255, 0); // yellow color for projectiles
-    ellipse(x, y, 8, 8); // projectiles are represented as circles
-    fill(255, 0, 0); // yellow color for projectiles
-    ellipse(x+2, y, 2, 2);
-    ellipse(x+1, y+2, 2, 2);
-    ellipse(x-1, y+2, 2, 2);
-    ellipse(x+2, y-2, 2, 2);
-    ellipse(x-2, y-2, 2, 2);
+    fill(205, 133, 63); // Yellow color for crust of projectiles
+    ellipse(x, y, 10, 10);
+    fill(255, 255, 0); // Yellow color for cheese of projectiles
+    ellipse(x, y, 8, 8);
+    displayProjectileDetails();
   }
-
 
   boolean hitEnemy() {
     float distance = dist(x, y, target.x, target.y);
@@ -40,5 +34,14 @@ class Projectile {
       return true;
     }
     return false;
+  }
+
+  private void displayProjectileDetails() {
+    fill(255, 0, 0); // Red color for pepperoni
+    ellipse(x + 2, y, 2, 2);
+    ellipse(x + 1, y + 2, 2, 2);
+    ellipse(x - 1, y + 2, 2, 2);
+    ellipse(x + 2, y - 2, 2, 2);
+    ellipse(x - 2, y - 2, 2, 2);
   }
 }

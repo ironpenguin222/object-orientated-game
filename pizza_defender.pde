@@ -124,8 +124,9 @@ void keyPressed() {
       spawnEnemyWave(enemyCount);
        enemyCount+=1;
       lastWaveSpawnFrame = frameCount;
+      }
       break;
-    }
+    
     case '1':
       placeTower(50, 20, 120, 30, 5);
       break;
