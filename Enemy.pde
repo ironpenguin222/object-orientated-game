@@ -44,7 +44,7 @@ class Enemy {
       x += direction.x;
       y += direction.y;
 
-      float distanceToTarget = dist(x, y, target.x, target.y);
+      float distanceToTarget = dist(x, y, target.x, target.y); // (6) dist() / (40) distance between two points
       if (distanceToTarget < 5) {
         currentWaypoint++;
       }

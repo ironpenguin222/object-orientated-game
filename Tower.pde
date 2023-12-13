@@ -41,7 +41,7 @@ class Tower {
     }
   }
 
-  private boolean canAttack() {
+  private boolean canAttack() { // (21) Declare & call a function with a return type
     return cooldown <= 0;
   }
 
