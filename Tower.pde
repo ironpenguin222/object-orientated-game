@@ -21,19 +21,19 @@ class Tower {
   }
 
   void attack(ArrayList<Enemy> enemies) {
-    if (canAttack()) {
-     framerate+=1;
-     if((framerate % enemyCount-1) == 0){
+    // Creates attacking
+    if (canAttack()) { // Checks if can attack
+    // Loop to attack enemies
       for (int i = 0; i < enemies.size(); i++) {
         Enemy enemy = enemies.get(i);
-        float distance = dist(x, y, enemy.x, enemy.y);
+        float distance = dist(x, y, enemy.x, enemy.y); // Checks distance to see if in range
         if (distance < range && projectiles.size() < maxProjectiles) {
-          Projectile projectile = new Projectile(x, y, enemy, damage);
+          Projectile projectile = new Projectile(x, y, enemy, damage); // Creates projectile with stats of tower
           projectiles.add(projectile);
           println("Tower attacks an enemy!");
           resetCooldown();
           break;
-        }
+        
       }
       }
     } else {
@@ -56,6 +56,7 @@ class Tower {
   }
 
   void updateProjectiles() {
+    // For loop to manage projectiles
     for (int i = projectiles.size() - 1; i >= 0; i--) {
       Projectile projectile = projectiles.get(i);
       projectile.update();

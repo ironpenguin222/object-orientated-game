@@ -28,6 +28,7 @@ class Projectile {
   }
 
   boolean hitEnemy() {
+    // Does a silly little check to see if it hits the enemies and give damage
     float distance = dist(x, y, target.x, target.y);
     if (distance < 10) {
       target.takeDamage(damage);
@@ -36,7 +37,7 @@ class Projectile {
     return false;
   }
 
-  private void displayProjectileDetails() {
+  private void displayProjectileDetails() { // Adds details to projectiles
     fill(255, 0, 0); // Red color for pepperoni
     ellipse(x + 2, y, 2, 2);
     ellipse(x + 1, y + 2, 2, 2);

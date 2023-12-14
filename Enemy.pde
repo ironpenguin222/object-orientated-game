@@ -8,7 +8,6 @@ class Enemy {
   ArrayList<PVector> waypoints;
   int currentWaypoint = 0;
   boolean rewardTriggered = false;
-
   int spawnTime;
 
   Enemy(ArrayList<PVector> waypoints, int speed, int reward, int spawnTime, int health) {
@@ -21,12 +20,12 @@ class Enemy {
     this.spawnTime = spawnTime;
   }
 
-  void increaseHealth(int amount) {
+  void increaseHealth(int amount) { // Increases health for each wave
     this.minHealth += amount;
     this.maxHealth += amount;
   }
 
-  void takeDamage(int damage) {
+  void takeDamage(int damage) { // Makes enemy take damage and die
     health -= damage;
     if (health <= 0 && !rewardTriggered) {
       println("Enemy defeated! Reward: $" + reward);
@@ -35,7 +34,7 @@ class Enemy {
     }
   }
 
-  void move() {
+  void move() { // Moves enemies based on the waypoints
     if (currentWaypoint < waypoints.size()) {
       PVector target = waypoints.get(currentWaypoint);
       PVector direction = PVector.sub(target, new PVector(x, y));
@@ -45,7 +44,7 @@ class Enemy {
       y += direction.y;
 
       float distanceToTarget = dist(x, y, target.x, target.y); // (6) dist() / (40) distance between two points
-      if (distanceToTarget < 5) {
+      if (distanceToTarget < 5) { // Checks distance from target
         currentWaypoint++;
       }
     } else {
@@ -53,7 +52,7 @@ class Enemy {
     }
   }
 
-  void despawn() {
+  void despawn() { // Despawns enemies
     lives -= health;
     if (lives <= 0) {
       gameOver = true;
@@ -63,8 +62,8 @@ class Enemy {
     }
   }
 
-  void display() {
-    float healthColor = map(health, 0, 150, 255, 0);
+  void display() { // Displays enemies
+    float healthColor = map(health, 0, 150, 255, 0); // Enemy color is related to health
     fill(255, healthColor, 0);
     ellipse(x, y, 20, 20);
 
