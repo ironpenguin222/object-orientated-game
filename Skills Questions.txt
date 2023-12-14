@@ -1,0 +1,22 @@
+﻿19. A for loop is used when you want to repeat a block of code a predetermined amount of times, while a while loop repeats a block of code as long as a condition remains true. A for loop is more rigid as you need to have a set amount of iterations you want, and a while loop is more flexible as the loop lasts as long as the condition remains.
+
+
+22. Parameters are variables that are defined in the declaration of a function/method that work as placeholders for the values. Arguments are the actual values that are passed into the function when they are called.
+
+
+26. A constructor function initializes the attributes of an object when it is created, ensuring a predefined state for the object.
+
+
+27. It's good to give each class its own tab because it keeps things neat and organized. It can function similarly to having separate folders for different parts of your code, which makes it easier to understand, fix bugs, and build more complex projects.
+
+
+31. Arrays have a set size, while arraylists are more flexible. Arraylists are only able to store objects within them while arrays can also hold primitive data types.
+
+
+32. Going through a list backwards could be helpful while reversing the order of an array, or used to find the last occurrence of an element in the array.
+
+
+37. You should use PVector over float variables for vector operations/geometric transformations. It improves readability, and integrates better into the code.
+
+
+42. A normalized vector is a vector with a length of 1, it keeps its original direction. It is useful in math operations, particularly in graphics and physics, where the direction of a vector is important. It simplifies calculations and helps get consistent results.
